@@ -255,13 +255,33 @@ input.form-check-input.me-1:checked{
     cursor: pointer;
 }
 
+ul.pagination{
+    margin: 0;
+}
+
 /* footer */
 footer .social-media-container{
     max-width: 25%;
 }
 
+.page-link{
+    color: #000000;
+}
+
+.page-item.active .page-link {
+    background-color: #ffffff;
+    border-color: var(--active-text-color);
+    color: var(--active-text-color);
+    font-size: bold;
+}
+
 /* media queries */
 @media (max-width:1024px){
+
+    body{
+        font-size: .8rem;
+    }
+
     .mf-hide-in-mobile{
         display: none;   
     }
