@@ -8,5 +8,21 @@ $(document).ready(function() {
             confirmButtonText: 'Ok'
           })
     });
+    
+    function addToFavorite(me){
+        if(me.hasClass('mf-active-btn')){
+            me.removeClass('mf-active-btn');
+        } else {
+            me.addClass('mf-active-btn');
+        }
+    }
+
+    $('#favorite-icon').click(function(){
+        if($('#favorite-icon').hasClass('mf-active-btn')){
+            $('#favorite-icon').removeClass('mf-active-btn');
+        } else {
+            $('#favorite-icon').addClass('mf-active-btn');
+        }
+    });
 
 });
