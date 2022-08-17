@@ -1,3 +1,11 @@
+function getLocalTime(){
+    let time = new Date();
+    let timeDiv = document.getElementById('timeDiv');
+    timeDiv.innerHTML=time.toLocaleTimeString();
+}
+
+setInterval(getLocalTime, 1000);
+
 $(document).ready(function() {
     
     $('.mf-add-to-cart-btn').click(function(){
