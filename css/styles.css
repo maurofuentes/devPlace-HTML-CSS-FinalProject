@@ -311,6 +311,11 @@ footer .social-media-container{
         font-size: .8rem;
     }
 
+    .dropstart .dropdown-menu[data-bs-popper] {
+        top: 100%;
+        right: -100%;
+    }
+
     aside{
         display: none;
     }
