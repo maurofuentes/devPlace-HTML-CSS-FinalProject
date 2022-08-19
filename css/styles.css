@@ -93,6 +93,14 @@ li{
     margin-right: 0;
 }
 
+.mf-left-pill{
+    left: 70%!important;
+}
+
+.dropstart .dropdown-toggle::before{
+    border: none;
+}
+
 .dropdown-toggle::after{
     border: none;
 }
