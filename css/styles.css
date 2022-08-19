@@ -287,6 +287,16 @@ footer .social-media-container{
 }
 
 /* media queries */
+@media(max-width:992px){
+    img{
+        width: 100%;
+    }
+
+    .mf-center-mobile{
+        text-align: center;
+    }
+}
+
 @media (max-width:1024px){
 
     body{
