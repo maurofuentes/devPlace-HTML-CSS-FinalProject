@@ -38,42 +38,61 @@
     <!-- contact data and social media icons END-->
     
     <!-- Mean navbar -->
-    <div class="container-fluid py-4 border-bottom px-5">
-        <div class="row">
-            <!-- Logo -->
-            <div class="col-3 logo-container">
-                <h1 class="fw-bold fs-3"><span>renoshop</span>bee</h1>
+    <nav class="navbar navbar-expand-lg navbar-light px-5 mf-column-mobile border-bottom">
+        <div class="container-fluid col-12 col-md-9 d-flex justify-content-between align-items-center p-0">
+            <div class="col-3 d-flex justify-content-between align-items-center">
+                <a class="navbar-brand logo-container" href="#"><h1 class="fw-bold fs-3"><span>renoshop</span>bee</h1></a>
             </div>
-            <nav class="col-6 d-flex align-items-center justify-content-around px-5 mf-section-menu-container mf-hide-in-mobile">
-                <a href="#" class="mf-active-item">Home</a>
-                <a href="#">Women</a>
-                <a href="#">Men</a>
-                <a href="#">Kids</a>
-                <a href="#">Jewellery</a>
-                <a href="#">Accessories</a>
-            </nav>
-            <div class="col-3 d-flex align-items-center mf-navbar-icons-container flex-row-reverse">
-                <i class="fa-solid fa-bars ms-4"></i>                
-                <i class="fa-solid fa-magnifying-glass me-1"></i>                
-                <!-- cart -->
-                <div class="dropdown position-relative">
-                    <button class="dropdown-toggle cart-dropdown" type="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                    <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
-                        3
-                    </span>
-                </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-9 collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="col-12 navbar-nav m-0 justify-content-around px-5 mf-section-menu-container text-center">
+                    <li class="nav-item">
+                        <a class="nav-link active mf-active-item" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Women</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Jewellery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accessories</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+        <div class="col-12 col-md-3 d-flex align-items-center mf-navbar-icons-container flex-row-reverse">
+            <button class="btn d-none mf-open-aside-btn p-0" onclick="aside_open()">
+                <i class="fa-solid fa-toggle-on ms-4"></i>
+            </button>               
+            <i class="fa-solid fa-magnifying-glass me-1"></i>
+            <!-- cart -->
+            <div class="dropdown position-relative">
+                <button class="dropdown-toggle cart-dropdown" type="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
+                    3
+                </span>
+            </div>
+        </div>
+    </nav>
     <!-- Mean navbar END -->
 
+    <!-- Breadcrumb -->
     <div class="container py-3 mf-hide-in-mobile">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb fw-bold">
@@ -84,11 +103,15 @@
             </ol>
         </nav>
     </div>
+    <!-- Breadcrumb END -->
 
+    <!-- sidebar -->
     <section class="container mb-5">
         <div class="row">
-            <!-- sidebar -->
-            <div class="col-3">
+            <aside class="col-3" id="aside">
+                <button class="btn bg-dark text-light w-100 fw-bold d-none mf-close-aside-btn mb-3" onclick="aside_close()">
+                    Close &times;
+                </button>  
                 <div class="row border-bottom">
                     <div class="col-12">
                         <h3>Categories</h3>
@@ -288,11 +311,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
             <!-- sidebar END -->
 
             <!-- products cards -->
-            <div class="col-9">
+            <main class="col-12 col-md-9">
                 <div class="row ms-1 border-bottom">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -317,10 +340,10 @@
                 <div class="row ms-1">
                     <div class="card mb-3">
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-12 col-md-4 text-center">
                             <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-12 col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
                                 <span class="fw-bold mf-card-price">$250.00</span>
@@ -352,10 +375,10 @@
                 <div class="row ms-1">
                     <div class="card mb-3">
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-12 col-md-4 text-center">
                             <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-12 col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
                                 <span class="fw-bold mf-card-price">$250.00</span>
@@ -387,10 +410,10 @@
                 <div class="row ms-1">
                     <div class="card mb-3">
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-12 col-md-4 text-center">
                             <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-12 col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
                                 <span class="fw-bold mf-card-price">$250.00</span>
@@ -422,10 +445,10 @@
                 <div class="row ms-1">
                     <div class="card mb-3">
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-12 col-md-4 text-center">
                             <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-12 col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
                                 <span class="fw-bold mf-card-price">$250.00</span>
@@ -457,10 +480,10 @@
                 <div class="row ms-1">
                     <div class="card mb-3">
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-12 col-md-4 text-center">
                             <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-12 col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
                                 <span class="fw-bold mf-card-price">$250.00</span>
@@ -511,19 +534,20 @@
                         
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
     </section>
+    <!-- sidebar END -->
 
     <!-- footer -->
     <footer>
         <div class="container-fluid border-top border-bottom py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-8">
+            <div class="container text-center">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-8 my-1">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Stay contact with us.
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center social-media-container border-start border-end">
+                    <div class="col-12 col-md-4 d-flex align-items-center justify-content-center social-media-container border-start border-end my-1">
                         <i class="fa-brands fa-facebook-f"></i>
                         <i class="fa-brands fa-twitter"></i>
                         <i class="fa-brands fa-instagram"></i>
@@ -536,7 +560,7 @@
         <div class="container-fluid">
             <div class="container border-top">
                 <div class="row my-3">
-                    <div class="col-3">
+                    <div class="col-12 col-md-3 text-center">
                         <h3>Information</h3>
                         <ul>
                             <li><a href="#">Delivery information</a></li>
@@ -545,7 +569,7 @@
                             <li><a href="#">My account</a></li>
                         </ul>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-3 text-center">
                         <h3>My account</h3>
                         <ul>
                             <li><a href="#">Sign in</a></li>
@@ -555,7 +579,7 @@
                             <li><a href="#">Track my order</a></li>
                         </ul>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-3 text-center">
                         <h3>Help</h3>
                         <ul>
                             <li><a href="#">F.A.Q.</a></li>
@@ -564,7 +588,7 @@
                             <li><a href="#">Privacy policy</a></li>
                         </ul>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-3 text-center">
                         <h3>Contact info</h3>
                         <ul>
                             <li><i class="fa-solid fa-house me-2"></i>1234 Your adress, Country</li>
@@ -578,10 +602,10 @@
         <div class="bg-dark text-secondary p-2">
             <div class="container">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12 col-md-8 text-center my-1">
                         <p><span>Copyright &COPY; 2022. Powered by</span><span class="text-light fw-bold"> Mauro Antonio Fuentes</span> </p>
                     </div>
-                    <div class="col-4 d-flex justify-content-between align-items-center">
+                    <div class="col-12 col-md-4 text-center d-flex justify-content-between align-items-center my-1">
                         <i class="fa-brands fa-cc-visa"></i>
                         <i class="fa-brands fa-cc-mastercard"></i>
                         <i class="fa-brands fa-cc-visa"></i>
@@ -597,7 +621,7 @@
             </div>
         </div>
     </footer>
-
+    <!-- footer END -->
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

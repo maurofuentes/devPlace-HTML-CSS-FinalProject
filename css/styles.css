@@ -5,6 +5,10 @@
   }
 
 /* General classes */
+h1{
+    margin-bottom: 0;
+}
+
 h3{
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -74,6 +78,13 @@ li{
     color: var(--active-text-color)!important;
 }
 
+
+@media (max-width:1024px){
+    .mf-navbar-icons-container{
+        justify-content: center;
+        margin: 1rem;
+    }
+}
 .mf-navbar-icons-container i{
     margin-right: 1rem;
 }
@@ -231,7 +242,7 @@ input.form-check-input.me-1:checked{
 /* cards section */
 .card{
     border: none;
-    margin: 2rem;
+    margin: 2rem 0;
 }
 
 .mf-card-price{
@@ -282,8 +293,24 @@ footer .social-media-container{
         font-size: .8rem;
     }
 
+    aside{
+        display: none;
+    }
+
+    .mf-open-aside-btn{
+        display: block!important;
+    }
+
+    .mf-close-aside-btn{
+        display: block!important;
+    }
+
     .mf-hide-in-mobile{
         display: none;   
+    }
+
+    .mf-column-mobile{
+        flex-direction: column;
     }
 
 }

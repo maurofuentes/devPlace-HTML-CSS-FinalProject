@@ -6,6 +6,17 @@ function getLocalTime(){
 
 setInterval(getLocalTime, 1000);
 
+// aside functions
+function aside_open() {
+    document.getElementById("aside").style.width = "100%";
+    document.getElementById("aside").style.display = "block";
+}
+
+function aside_close() {
+    document.getElementById("aside").style.display = "none";
+}
+// aside functions END
+
 $(document).ready(function() {
     
     $('.mf-add-to-cart-btn').click(function(){
