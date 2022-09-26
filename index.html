@@ -75,17 +75,27 @@
             </button>               
             <i class="fa-solid fa-magnifying-glass me-1"></i>
             <!-- cart -->
-            <div class="dropdown dropstart position-relative">
+            <div id="showCartBtn" class="dropdown dropstart position-relative">
                 <button class="dropdown-toggle cart-dropdown" type="" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger mf-left-pill">
-                    3
+                <div class="dropdown-menu dropdown-menu-start mf-cart-container" aria-labelledby="dropdownMenuButton1">
+                    <div class="d-grid gap-2 px-1 text-center">
+                        <h5 class="rounded py-3 bg-light">Productos agregados</h5>
+
+                        <ul id="cartProductsUl">
+                            
+                        </ul>
+
+                        <p class="fw-bold text-uppercase">Total: $<span id="totalToPay"></span></p>
+
+                        <button id="clearCartBtn" class="btn btn-md btn-danger">Vaciar carrito</button>
+
+                    </div>
+
+                </div>
+                <span id="pillCartAmount" class="position-absolute top-0 translate-middle badge rounded-pill bg-danger mf-left-pill">
+                    
                 </span>
             </div>
         </div>
@@ -105,9 +115,9 @@
     </div>
     <!-- Breadcrumb END -->
 
-    <!-- sidebar -->
     <section class="container mb-5">
         <div class="row">
+            <!-- sidebar -->
             <aside class="col-3" id="aside">
                 <button class="btn bg-dark text-light w-100 fw-bold d-none mf-close-aside-btn mb-3" onclick="aside_close()">
                     Close &times;
@@ -314,7 +324,6 @@
             </aside>
             <!-- sidebar END -->
 
-            <!-- products cards -->
             <main class="col-12 col-md-9">
                 <div class="row ms-1 border-bottom">
                     <div class="d-flex justify-content-between align-items-center">
@@ -325,299 +334,333 @@
                             <p class="m-0">Sort by</p>
                             <div class="dropdown m-1">
                                 <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                  News
+                                    News
                                 </a>
                               
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                  <li><a class="dropdown-item" href="#">Action</a></li>
-                                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
-                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row ms-1">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
 
+                <!-- products cards -->
+                <div id="products-container" class="products-container">  
+                
+                    <div class="row ms-1">
+                        <div class="card mb-3">
+                            <div class="row g-0">
 
-                          <!-- <div class="col-12 col-md-4 text-center">
-                            <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
-                          </div> -->
-                          <div class="col-12 col-md-8 px-5">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
-                                <span class="fw-bold mf-card-price">$250.00</span>
-                                <div class="my-2 text-warning">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
-                                <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
-                                <div class="d-flex mf-card-btn-container">
-                                    <div class="mf-add-to-cart-btn">
-                                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
-                                    </div>
-                                    <div id="favorite-icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                <div class="col-12 col-md-8 px-5">
+                                    <div class="card-body" id="product01">
+                                        <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
+                                        <span class="fw-bold mf-card-price">$250.00</span>
+                                        <div class="my-2 text-warning">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        </div>
+                                        <p class="card-text" id="descriptionProduct01">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
+                                        <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
+                                        <div class="d-flex mf-card-btn-container">
+                                            <div id="1" class="mf-add-to-cart-btn"
+                                                data-product-id="1" 
+                                                data-name="Joust Dufle Bag" 
+                                                data-price="$250.00"
+                                                data-product-img:="https://picsum.photos/270/400"
+                                                data-product-category:="Shoes, T-shirt teen"
+                                            >
+                                                <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
+                                            </div>
+                                            <div id="favorite-icon">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                          </div>
                         </div>
                     </div>
-                </div>
-                <div class="row ms-1">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+
+                    <div class="row ms-1">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            <!-- <div class="col-12 col-md-4 text-center">
+                                <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
+                            </div> -->
+                            <div class="col-12 col-md-8 px-5">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
+                                    <span class="fw-bold mf-card-price">$250.00</span>
+                                    <div class="my-2 text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
+                                    <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
+                                    <div class="d-flex mf-card-btn-container">
+                                        <div id="2" class="mf-add-to-cart-btn"
+                                            data-product-id="2" 
+                                            data-name="Joust Dufle Bag" 
+                                            data-price="$250.00"
+                                            data-product-img:="https://picsum.photos/270/400"
+                                            data-product-category:="Shoes, T-shirt teen"
+                                        >
+                                            <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
+                                        </div>
+                                        <div>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
-                          <!-- <div class="col-12 col-md-4 text-center">
-                            <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
-                          </div> -->
-                          <div class="col-12 col-md-8 px-5">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
-                                <span class="fw-bold mf-card-price">$250.00</span>
-                                <div class="my-2 text-warning">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
-                                <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
-                                <div class="d-flex mf-card-btn-container">
-                                    <div class="mf-add-to-cart-btn">
-                                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
-                                    </div>
-                                    <div>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </div>
-                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
-                </div>
-                <div class="row ms-1">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                    <div class="row ms-1">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            <!-- <div class="col-12 col-md-4 text-center">
+                                <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
+                            </div> -->
+                            <div class="col-12 col-md-8 px-5">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
+                                    <span class="fw-bold mf-card-price">$250.00</span>
+                                    <div class="my-2 text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
+                                    <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
+                                    <div class="d-flex mf-card-btn-container">
+                                        <div id="3" class="mf-add-to-cart-btn"
+                                            data-product-id="3" 
+                                            data-name="Joust Dufle Bag" 
+                                            data-price="$250.00"
+                                            data-product-img:="https://picsum.photos/270/400"
+                                            data-product-category:="Shoes, T-shirt teen"
+                                        >
+                                            <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
+                                        </div>
+                                        <div>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
-                          <!-- <div class="col-12 col-md-4 text-center">
-                            <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
-                          </div> -->
-                          <div class="col-12 col-md-8 px-5">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
-                                <span class="fw-bold mf-card-price">$250.00</span>
-                                <div class="my-2 text-warning">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
-                                <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
-                                <div class="d-flex mf-card-btn-container">
-                                    <div class="mf-add-to-cart-btn">
-                                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
-                                    </div>
-                                    <div>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </div>
-                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
-                </div>
-                <div class="row ms-1">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                    <div class="row ms-1">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            <!-- <div class="col-12 col-md-4 text-center">
+                                <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
+                            </div> -->
+                            <div class="col-12 col-md-8 px-5">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
+                                    <span class="fw-bold mf-card-price">$250.00</span>
+                                    <div class="my-2 text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
+                                    <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
+                                    <div class="d-flex mf-card-btn-container">
+                                        <div id="4" class="mf-add-to-cart-btn"
+                                            data-product-id="4" 
+                                            data-name="Joust Dufle Bag" 
+                                            data-price="$250.00"
+                                            data-product-img:="https://picsum.photos/270/400"
+                                            data-product-category:="Shoes, T-shirt teen"
+                                        >
+                                            <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
+                                        </div>
+                                        <div>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
-                          <!-- <div class="col-12 col-md-4 text-center">
-                            <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
-                          </div> -->
-                          <div class="col-12 col-md-8 px-5">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
-                                <span class="fw-bold mf-card-price">$250.00</span>
-                                <div class="my-2 text-warning">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
-                                <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
-                                <div class="d-flex mf-card-btn-container">
-                                    <div class="mf-add-to-cart-btn">
-                                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
-                                    </div>
-                                    <div>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </div>
-                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
-                </div>
-                <div class="row ms-1">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                    <div class="row ms-1">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div id="carouselExampleControls" class="carousel slide col-12 col-md-4 text-center" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            <!-- <div class="col-12 col-md-4 text-center">
+                                <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
+                            </div> -->
+                            <div class="col-12 col-md-8 px-5">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
+                                    <span class="fw-bold mf-card-price">$250.00</span>
+                                    <div class="my-2 text-warning">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/270/400" class="d-block w-100" alt="image">
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
+                                    <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
+                                    <div class="d-flex mf-card-btn-container">
+                                        <div id="5" class="mf-add-to-cart-btn"
+                                            data-product-id="5" 
+                                            data-name="Joust Dufle Bag" 
+                                            data-price="$250.00"
+                                            data-product-img:="https://picsum.photos/270/400"
+                                            data-product-category:="Shoes, T-shirt teen"
+                                        >
+                                            <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
+                                        </div>
+                                        <div>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
-                          <!-- <div class="col-12 col-md-4 text-center">
-                            <img src="https://picsum.photos/270/400" class="img-fluid rounded-start" alt="image">
-                          </div> -->
-                          <div class="col-12 col-md-8 px-5">
-                            <div class="card-body">
-                                <h5 class="card-title mb-3 fw-bold">Joust Dufle Bag</h5>
-                                <span class="fw-bold mf-card-price">$250.00</span>
-                                <div class="my-2 text-warning">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vel blanditiis repellendus repudiandae fuga sunt in dignissimos nobis, aliquam obcaecati, dicta repellat? Cum culpa ratione aliquid debitis similique porro non.</p>
-                                <p class="card-text my-3"><small class="text-muted">Shoes, T-shirt teen</small></p>                               
-                                <div class="d-flex mf-card-btn-container">
-                                    <div class="mf-add-to-cart-btn">
-                                        <i class="fa-solid fa-cart-shopping me-2"></i>Add to cart
-                                    </div>
-                                    <div>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </div>
-                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="row border-bottom border-top">
                     <div class="col-12 d-flex justify-content-center align-items-center">

@@ -105,6 +105,10 @@ li{
     border: none;
 }
 
+.mf-cart-container{
+    min-width: 15rem;
+}
+
 /* sidebar */
 .accordion-button::after{
     width: 0;
@@ -313,7 +317,7 @@ footer .social-media-container{
 
     .dropstart .dropdown-menu[data-bs-popper] {
         top: 100%;
-        right: -100%;
+        right: -400%;
     }
 
     aside{
