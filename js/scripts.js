@@ -140,6 +140,8 @@ function getProductData(productData){
         cart = [...cart, newProduct];
     }
     
+    amount = localStorage.getItem('cartAmount');
+
     amount++;
 
     localStorage.setItem('cartAmount', amount);
