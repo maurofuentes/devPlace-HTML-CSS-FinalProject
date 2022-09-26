@@ -220,6 +220,12 @@ $('.mf-add-to-cart-btn').click(function(){
                 getProductData(selectedProduct);
             }
 
+            Swal.fire({
+                title: 'Producto agregado',
+                text: 'Continua cargando tu carrito!',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
         }
     });
 });
